@@ -58,7 +58,20 @@ The model achieves **87.7% overall accuracy** with strong performance differenti
 - **Phone Numbers**: Complete failure
 - **Organization Names**: Complete failure
 
-(see notbook)
+{'eval_loss': 0.09532476216554642, 'eval_name_precision': 0.8935785221343209, 'eval_name_recall': 0.8353658536585366, 'eval_name_f1': 0.8634921925829538, 'eval_date_precision': 0.8218362630436306, 'eval_date_recall': 0.9047105080564336, 'eval_date_f1': 0.8612844036697248, 'eval_street_address_precision': 0.9190704508545356, 'eval_street_address_recall': 0.9158125915080527, 'eval_street_address_f1': 0.917438628994905, 'eval_bban_precision': 0.8306962025316456, 'eval_bban_recall': 0.8898305084745762, 'eval_bban_f1': 0.8592471358428805, 'eval_iban_precision': 0.9360675512665863, 'eval_iban_recall': 0.8049792531120332, 'eval_iban_f1': 0.8655883993307306, 'eval_email_precision': 0.965566037735849, 'eval_email_recall': 0.9756911344137273, 'eval_email_f1': 0.9706021811284969, 'eval_phone_precision': 0.0, 'eval_phone_recall': 0.0, 'eval_phone_f1': 0.0, 'eval_organization_precision': 0.0, 'eval_organization_recall': 0.0, 'eval_organization_f1': 0.0, 'eval_overall_accuracy': 0.9780037763675367, 'eval_runtime': 18.6833, 'eval_samples_per_second': 299.411, 'eval_steps_per_second': 37.467, 'epoch': 3.0}
+
+Testing entity extraction...
+
+Text: This agreement was signed on August 1, 2021 by Romeo R. Druso.
+Entities:
+  - DATE: August 1, 2021
+  - NAME: Romeo R. Druso
+
+Text: The supplier is located at 406 Joshua Square and paid via IBAN DE89370400440532013000.
+Entities:
+  - STREET_ADDRESS: 4
+  - STREET_ADDRESS: 406 Joshua Square
+  - IBAN: DE89370400440532013000
 ### Critical Observations
 
 1.Precision-Recall Trade-off: Email detection shows near-perfect balance (0.96 precision, 0.97 recall), while IBAN detection shows high precision (0.91) but lower recall (0.77), indicating missed detections.
@@ -181,7 +194,10 @@ The classifier demonstrates varying performance across domains:
 ### Visualization Strategy
 
 **Confusion Matrix**: Heatmap visualization clearly shows the Legal-Finance confusion cluster and Healthcare's relative isolation.
-(see notebook)
+**train loss** : 
+Epoch 1/3, Loss: 0.8447
+Epoch 2/3, Loss: 0.4596
+Epoch 3/3, Loss: 0.0961
 
 ## 4. Error Analysis with Concrete Examples
 

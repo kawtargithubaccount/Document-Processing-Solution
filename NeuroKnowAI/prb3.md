@@ -12,7 +12,7 @@ Production-Ready: Deterministic, cacheable, and scalable
 
 # 2. Architecture & Design Decisions
 ## 2.1 System Architecture
-text
+```text
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                        UltimateAnonymizer                                │
 │                                                                          │
@@ -38,20 +38,22 @@ text
 │  │                 │  │                 │  │ data             │         │
 │  └─────────────────┘  └─────────────────┘  └──────────────────┘         │
 └─────────────────────────────────────────────────────────────────────────┘
+```
+
 
 ## 2.2 Processing Pipeline
-Input Text → Language Detection → PII Detection → Entity Relationship Analysis → 
-              ↓                                                              ↓
-        Anonymization Mode Selection ←───────────────┘
-              ↓
+Input Text -> Language Detection -> PII Detection -> Entity Relationship Analysis -> 
+                                                                            
+        Anonymization Mode Selection 
+              
         Replacement Generation
-              ↓
+              
         Output (Redacted/Surrogate Text)
 ## 2.3 Processing Modes
 Mode:	
-Strict	[REDACTED]	 →  Maximum privacy, compliance	"John Smith" → "[REDACTED]"
-Typed	[ENTITY_TYPE] → Debugging, audit trails	"555-123-4567" → "[PHONE]"
-Surrogate Realistic fake data →  Development, testing	"John Smith" → "Alice Martin"
+Strict	[REDACTED]	 ->  Maximum privacy, compliance	"John Smith" -> "[REDACTED]"
+Typed	[ENTITY_TYPE] -> Debugging, audit trails	"555-123-4567" -> "[PHONE]"
+Surrogate Realistic fake data ->  Development, testing	"John Smith" -> "Alice Martin"
 
 # 3. PII Detection Strategy
 ## 3.1 Detection Categories
@@ -124,28 +126,26 @@ For production deployment, a hybrid architecture is recommended:
 
 text
 Stage 1: Fast Regex Filter
-  → Catch 95% of obvious PII
-  → High precision patterns
+   Catch 95% of obvious PII
+    High precision patterns
 
 Stage 2: ML Model Validation
-  → Validate ambiguous cases
-  → Context disambiguation
+   Validate ambiguous cases
+   Context disambiguation
 
 Stage 3: Rule-Based Post-processing
-  → Apply business rules
-  → Handle edge cases
+   Apply business rules
+   Handle edge cases
 Performance Comparison:
 
 text
-┌─────────────────┬─────────────┬─────────────┬─────────────┐
-│ Metric          │ Regex-Only  │ Model-Only  │ Hybrid      │
-├─────────────────┼─────────────┼─────────────┼─────────────┤
-│ Precision       │ 85%         │ 92%         │ 90%         │
-│ Recall          │ 88%         │ 95%         │ 93%         │
-│ Speed           │ 10K docs/s  │ 100 docs/s  │ 2K docs/s   │
-│ Maintainability │ Medium      │ Low         │ High        │
-│ Auditability    │ High        │ Low         │ Medium      │
-└─────────────────┴─────────────┴─────────────┴─────────────┘
+| Metric          | Regex-Only | Model-Only | Hybrid |
+|-----------------|------------|------------|--------|
+| Precision       | 85%        | 92%        | 90%    |
+| Recall          | 88%        | 95%        | 93%    |
+| Speed           | 10K docs/s | 100 docs/s | 2K docs/s |
+| Maintainability | Medium     | Low        | High   |
+| Auditability    | High       | Low        | Medium |
 
 # 5. Handling False Positives in Medical/Legal Contexts
 ## 5.1 Common False Positive Sources

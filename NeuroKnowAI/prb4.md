@@ -3,7 +3,7 @@
 ## 1 Architecture Design
 The system is designed as a **modular, service-oriented ML pipeline** capable of handling large-scale document processing across multiple sectors (legal, finance, healthcare). Each stage is independently scalable and observable.
 
-
+```text
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                     CLIENT APPLICATIONS                                  │
 │  (Web UI, Mobile Apps, API Integrations, Batch Uploads)                  │
@@ -14,13 +14,13 @@ The system is designed as a **modular, service-oriented ML pipeline** capable of
 │                     API GATEWAY & LOAD BALANCER                          │
 │  • Request Routing & Authentication                                      │
 │  • Rate Limiting (1000 RPM/user)                                         │
-│  • DDoS Protection                                                        │
+│  • DDoS Protection                                                       │
 └─────────────────────┬──────────────────────┬────────────────────────────┘
                       │                      │
-           ┌──────────▼──────────┐  ┌───────▼────────┐
-           │   REAL-TIME API     │  │  BATCH QUEUE   │
-           │  (FastAPI/Gunicorn) │  │  (Kafka/Rabbit) │
-           └──────────┬──────────┘  └───────┬────────┘
+           ┌──────────▼──────────┐  ┌────────▼────────┐
+           │   REAL-TIME API     │  │  BATCH QUEUE     │
+           │  (FastAPI/Gunicorn) │  │ (Kafka/Rabbit)  │
+           └──────────┬──────────┘  └────────┬────────┘
                       │                      │
            ┌──────────▼──────────────────────▼──────────┐
            │          DOCUMENT PROCESSING ENGINE         │
@@ -48,6 +48,9 @@ The system is designed as a **modular, service-oriented ML pipeline** capable of
            │  • Vector DB (Pinecone/Weaviate)            │
            │  • Audit Logs (Immutable Storage)           │
            └─────────────────────────────────────────────┘
+```
+
+
 ```
 
 

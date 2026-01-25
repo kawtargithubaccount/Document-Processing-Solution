@@ -92,7 +92,7 @@ F1 SCORE for each label
 | **B-ANSWER**   | **0.8871** | Very strong semantic recognition |
 | **B-HEADER**   | **0.8788** | Layout cues well learned         |
 | **I-HEADER**   | **0.8285** | Good sequence consistency        |
-| **O**          | 0.7223     | Background tokens harder         |
+| **O**          | **0.7223** | Background tokens harder         |
 | **I-QUESTION** | **0.5118** | Most difficult class             |
  
 The proposed system fine-tunes LayoutLMv3 for token-level classification on structured document images. By jointly encoding textual content, spatial layout, and visual information, the model effectively learns semantic roles such as questions, answers, and headers. Training on the FUNSD dataset demonstrates stable convergence and strong performance, achieving a weighted F1-score of 0.78. Results indicate that visually and spatially distinctive classes such as headers and answers are recognized with high accuracy, while more ambiguous token spans such as in-question text remain challenging. Overall, the model confirms the effectiveness of multimodal transformers for document understanding tasks.
